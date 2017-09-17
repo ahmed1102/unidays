@@ -1,0 +1,36 @@
+﻿@model UnidaysTestAhmedAhmed.Models.UserViewModel
+
+@{
+    ViewBag.Title = "index";
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<style>
+    .errorMessage{
+        color:red;
+    }
+</style>
+
+<div class="container" style="width:100%;margin-top:2%">
+
+    @using (Html.BeginForm("index", "User", FormMethod.Post))
+    {
+        
+        @Html.Label("Email Address")
+        @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", @placeholder = "Enter Email Address" })
+        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "errorMessage" })
+        
+        <br />
+        
+        @Html.Label("Password")
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter Password" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "errorMessage" })
+        
+        <br/>
+        
+        <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+    }
+
+</div>
